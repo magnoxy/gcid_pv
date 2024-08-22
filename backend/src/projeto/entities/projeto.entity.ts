@@ -1,6 +1,7 @@
 import { Area } from 'src/area/entities/area.entity';
 import { Cliente } from 'src/cliente/entities/cliente.entity';
 import { Instituto } from 'src/instituto/entities/instituto.entity';
+import { Proposta } from 'src/propostas/entities/proposta.entity';
 import {
   Column,
   CreateDateColumn,
@@ -8,6 +9,7 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -51,6 +53,9 @@ export class Projeto {
   @Column()
   publico: boolean;
 
+  @Column({nullable: true})
+  estimativaValor: number;
+
   @ManyToOne(() => Cliente, (cliente) => cliente.projetos, {
     nullable: false,
   })
@@ -66,6 +71,9 @@ export class Projeto {
   @ManyToMany(() => Area, (area) => area.projetos)
   @JoinTable({ name: 'conhecimento_projeto' })
   areas: Area[];
+
+  @OneToMany(() => Proposta, (proposta) => proposta.projeto)
+  propostas: Proposta[];
 
   @Column({ name: 'projdtinicio', nullable: true })
   dtInicio: Date;

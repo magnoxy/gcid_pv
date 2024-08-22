@@ -19,7 +19,7 @@ export default function AppLayout({
 }>) {
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <html lang="pt-br" suppressHydrationWarning>
           <body
             className={cn(
@@ -30,7 +30,7 @@ export default function AppLayout({
             <ToastProvider>{children}</ToastProvider>
           </body>
         </html>
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </QueryClientProvider>
   );
 }

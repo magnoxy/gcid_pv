@@ -31,7 +31,7 @@ import {
 } from "@/src/components/ui/dialog";
 import { CirclePlus } from "lucide-react";
 
-import { createProjeto, GetProjects } from "../../data/request";
+import { createProjeto, getProjects } from "../../data/request";
 
 export function ProjectList() {
   const { user } = useContext(AuthContext);
@@ -59,7 +59,7 @@ export function ProjectList() {
     if (!user) return;
 
     const fetchProjects = async () => {
-      const data = await GetProjects(user);
+      const data = await getProjects(user);
       setProjects(data);
     };
 
@@ -82,7 +82,7 @@ export function ProjectList() {
   return (
     <div>
       <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Projetos</h1>
+        <h1 className="text-lg font-semibold md:text-2xl">Projetoss</h1>
         <Button
           onClick={openDialog}
           size="icon"
